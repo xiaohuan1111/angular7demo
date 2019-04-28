@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   private collapsed: boolean = true;
   
-  private tabs: string[] = ['Tab 1', 'Tab 2'];
+  public tabs: string[] = ['Tab 1', 'Tab 2'];
   constructor() { }
 
   ngOnInit() {
