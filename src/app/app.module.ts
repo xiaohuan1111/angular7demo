@@ -10,10 +10,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { LoginComponent } from './components/login/login.component';
+import { Head1Component } from './components/head1/head1.component';
+import { Head2Component } from './components/head2/head2.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    Head1Component,
+    Head2Component
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,12 @@
   <nz-header style="position: fixed; width: 100%; top: 0; z-index: 1; text-align: center;">
     <div class="logo"></div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-      <li nz-menu-item>nav 1</li>
-      <li nz-menu-item>nav 2</li>
-      <li nz-menu-item>nav 3</li>
+      <li nz-menu-item>
+        <a [routerLink]="[ '/head1']">head1</a>
+      </li>
+      <li nz-menu-item>
+        <a [routerLink]="[ '/head2']">head2</a>
+      </li>
     </ul>
   </nz-header>
   <nz-content>
@@ -12,48 +15,75 @@
       <nz-sider [nzWidth]="200" style="background:#fff; overflow: auto;">
         <ul nz-menu [nzMode]="'inline'" style="height:100%">
           <li nz-submenu>
-            <span title><i nz-icon type="user"></i>subnav 1</span>
+            <span title>
+              <i nz-icon type="user"></i>
+              <a>用户管理</a>
+            </span>
             <ul>
-              <li nz-menu-item>option1</li>
-              <li nz-menu-item>option2</li>
-              <li nz-menu-item>option3</li>
-              <li nz-menu-item>option4</li>
+              <li nz-submenu>
+                <span title>
+                  <a>用户列表</a>
+                </span>
+                <ul>
+                  <li nz-menu-item>
+                    <a [routerLink]="[ '/user/userlist/list1']">用户列表一</a>
+                  </li>
+                  <li nz-menu-item>
+                      <a [routerLink]="[ '/user/userlist/list2']">用户列表二</a>
+                  </li>
+                  <li nz-menu-item>
+                      <a [routerLink]="[ '/user/userlist/list3']">用户列表三</a>
+                  </li>
+                </ul>
+              </li>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/user/yhqx']">用户权限</a>
+              </li>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/user/grxx']">个人信息</a>
+              </li>
             </ul>
           </li>
           <li nz-submenu>
-            <span title><i nz-icon type="laptop"></i>subnav 2</span>
+            <span title>
+              <i nz-icon type="laptop"></i>
+              <a>产品管理</a>
+            </span>
             <ul>
                 <li nz-submenu>
-                  <span title>subnav 22</span>
+                  <span title>产品列表</span>
                 <ul>
-                  <li nz-menu-item>option25</li>
-                  <li nz-menu-item>option26</li>
-                  <li nz-menu-item>option27</li>
-                  <li nz-menu-item>option28</li>
+                  <li nz-menu-item>
+                    <a [routerLink]="[ '/product/plist/list1' ]">产品表一</a>
+                  </li>
+                  <li nz-menu-item>
+                    <a [routerLink]="[ '/product/plist/list2' ]">产品表二</a>
+                  </li>
                 </ul>
               </li>
-              <li nz-submenu>
-                <span title>subnav 22</span>
-                <ul>
-                  <li nz-menu-item>option25</li>
-                  <li nz-menu-item>option26</li>
-                  <li nz-menu-item>option27</li>
-                  <li nz-menu-item>option28</li>
-                </ul>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/product/pcate']">产品分类</a>
               </li>
-              <li nz-menu-item>option5</li>
-              <li nz-menu-item>option6</li>
-              <li nz-menu-item>option7</li>
-              <li nz-menu-item>option8</li>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/product/addproduct']">添加产品</a>
+              </li>
             </ul>
           </li>
           <li nz-submenu>
-            <span title><i nz-icon type="notification"></i>subnav 3</span>
+            <span title>
+              <i nz-icon type="notification"></i>
+              <a [routerLink]="[ '/news' ]">新闻中心</a>
+            </span>
             <ul>
-              <li nz-menu-item>option9</li>
-              <li nz-menu-item>option10</li>
-              <li nz-menu-item>option11</li>
-              <li nz-menu-item>option12</li>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/news/newslist' ]">新闻列表</a>
+              </li>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/news/newscate' ]">新闻分类</a>
+              </li>
+              <li nz-menu-item>
+                <a [routerLink]="[ '/news/addnews' ]">新增新闻</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -64,21 +94,8 @@
           <nz-breadcrumb-item>List</nz-breadcrumb-item>
           <nz-breadcrumb-item>App</nz-breadcrumb-item>
         </nz-breadcrumb>
-        <nz-tabset [nzType]="'card'" [nzTabBarExtraContent]="extraTemplate">
-          <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
-            <ng-template #titleTemplate>
-              <div>
-                {{ tab }}
-                <i nz-icon type="close" (click)="closeTab(tab)" class="ant-tabs-close-x"></i>
-              </div>
-            </ng-template>
-            Content of {{ tab }}
-          </nz-tab>
-        </nz-tabset>
-        <ng-template #extraTemplate>
-          <i class="ant-tabs-new-tab" nz-icon type="plus" (click)="newTab()"></i>
-        </ng-template>
-        Content
+        
+        <router-outlet></router-outlet>
       </nz-content>
     </nz-layout>
     <nz-footer style="position: fixed; width: 100%; bottom: 0; text-align: center;">Ant Design ©2019 Implement By Angular</nz-footer>
